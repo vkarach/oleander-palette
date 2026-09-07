@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Карта палитры Oleander</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground: #f4efef;
+    --surface: #fffdfd;
+    --surface-2: #ece4e5;
+    --ink: #2b1e21;
+    --ink-soft: #6f5b5f;
+    --muted: #8b767a;
+    --accent: #a8385a;
+    --accent-soft: #f3e3e7;
+    --hairline: #e2d4d7;
+    --hairline-strong: #cfbdc1;
+    --check-a: #ffffff;
+    --check-b: #e3d8da;
+    --shadow: 0 1px 2px rgba(43, 30, 33, .06);
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --body: "Public Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+    --display: "Bricolage Grotesque", "Public Sans", -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #1b1113;
+      --surface: #251719;
+      --surface-2: #2f1e21;
+      --ink: #f1e7e8;
+      --ink-soft: #c4aeb2;
+      --muted: #9c8388;
+      --accent: #e5899d;
+      --accent-soft: #3a2429;
+      --hairline: #382528;
+      --hairline-strong: #4a3236;
+      --check-a: #3a2b2e;
+      --check-b: #2b1e21;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { color-scheme: light dark; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 40px 22px 88px; }
+
+  header.masthead { display: flex; flex-direction: column; gap: 14px; margin-bottom: 34px; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent);
+  }
+  h1 {
+    font-family: var(--display); font-weight: 700; font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.04; margin: 0; text-wrap: balance; letter-spacing: -.01em;
+  }
+  .lede { max-width: 62ch; color: var(--ink-soft); margin: 0; }
+
+  .primer { display: grid; gap: 18px; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+            margin: 0 0 38px; align-items: start; }
+  @media (max-width: 760px) { .primer { grid-template-columns: 1fr; } }
+  .panel {
+    background: var(--surface); border: 1px solid var(--hairline);
+    border-radius: 10px; padding: 18px 20px; box-shadow: var(--shadow);
+  }
+  .panel h2 {
+    font-family: var(--display); font-weight: 600; font-size: 15px; margin: 0 0 10px;
+    letter-spacing: .01em;
+  }
+  .panel p { margin: 0 0 10px; color: var(--ink-soft); font-size: 14px; }
+  .panel p:last-child { margin-bottom: 0; }
+  code {
+    font-family: var(--mono); font-size: .92em; background: var(--surface-2);
+    padding: 1px 5px; border-radius: 4px; color: var(--ink);
+  }
+  .alpha-scale { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .alpha-chip {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    border: 1px solid var(--hairline); border-radius: 6px; padding: 5px 9px 6px;
+    background: var(--surface-2); min-width: 52px;
+  }
+  .alpha-chip b { font-family: var(--mono); font-weight: 500; font-size: 13px; color: var(--accent); }
+  .alpha-chip span { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  .toolbar {
+    position: sticky; top: 0; z-index: 5; display: flex; gap: 12px; align-items: center;
+    padding: 12px 0; background: var(--ground); border-bottom: 1px solid var(--hairline);
+    margin-bottom: 6px; flex-wrap: wrap;
+  }
+  #q { flex: 1 1 260px; min-width: 0; font-family: var(--body); font-size: 14px; color: var(--ink); background: var(--surface); border: 1px solid var(--hairline-strong); border-radius: 8px; padding: 9px 12px; } #q:focus { outline: 2px solid var(--accent); outline-offset: 1px; } #q::placeholder { color: var(--muted); }
+  .count { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  section.group { margin-top: 30px; }
+  section.group > h2 {
+    font-family: var(--display); font-weight: 700; font-size: 21px; margin: 0 0 2px;
+    letter-spacing: -.005em;
+  }
+  section.group > .note { margin: 0 0 12px; color: var(--muted); font-size: 13.5px; }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--hairline); border-radius: 10px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 620px; }
+  th {
+    text-align: left; font-family: var(--mono); font-weight: 400; font-size: 10.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+    padding: 9px 12px; border-bottom: 1px solid var(--hairline); white-space: nowrap;
+  }
+  td { padding: 7px 12px; border-bottom: 1px solid var(--hairline); vertical-align: middle; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--accent-soft); }
+  .sw {
+    width: 30px; height: 22px; border-radius: 4px; border: 1px solid var(--hairline-strong);
+    background-image:
+      linear-gradient(var(--swatch), var(--swatch)),
+      conic-gradient(var(--check-b) 0 25%, var(--check-a) 0 50%, var(--check-b) 0 75%, var(--check-a) 0);
+    background-size: 100% 100%, 10px 10px;
+  }
+  td.c-sw { width: 30px; padding-right: 0; }
+  td.c-label { color: var(--ink); }
+  .key {
+    font-family: var(--mono); font-size: 12.5px; color: var(--accent); cursor: copy;
+    border: none; background: none; padding: 0; text-align: left;
+  }
+  .key:hover { text-decoration: underline; }
+  .key:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+  .val { font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); white-space: nowrap; }
+  .via { font-family: var(--mono); font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+  .pct {
+    font-family: var(--mono); font-size: 11px; font-variant-numeric: tabular-nums;
+    color: var(--accent); border: 1px solid var(--hairline-strong); border-radius: 999px;
+    padding: 1px 7px; white-space: nowrap;
+  }
+  .pct.full { color: var(--muted); border-color: var(--hairline); }
+  .empty { padding: 20px 12px; color: var(--muted); font-size: 14px; }
+  footer.foot { margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--hairline); color: var(--muted); font-size: 13px; }
+  #toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 22px; background: var(--ink); color: var(--ground); font-family: var(--mono); font-size: 12.5px; padding: 8px 14px; border-radius: 999px; opacity: 0; transition: opacity .18s ease; pointer-events: none; } #toast.on { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { #toast { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">Telegram Desktop / tdesktop-palette</div>
+    <h1>Карта палитры Oleander</h1>
+    <p class="lede">Где в интерфейсе какой ключ. Слева образец цвета с шахматкой, поэтому прозрачность видно сразу. Клик по имени ключа копирует его.</p>
+  </header>
+
+  <div class="primer">
+    <div class="panel">
+      <h2>Прозрачность</h2>
+      <p>Формат значения <code>#RRGGBBAA</code>. Последние две цифры это непрозрачность: <code>ff</code> сплошной цвет, <code>00</code> невидимо. Значение без них равнозначно <code>ff</code>.</p>
+      <p>Пересчёт: <code>AA = процент / 100 * 255</code> в шестнадцатеричном виде.</p>
+      <div class="alpha-scale" id="alphaScale"></div>
+    </div>
+    <div class="panel">
+      <h2>Как устроен файл</h2>
+      <p>Значением ключа может быть не только цвет, но и имя другого ключа или константы: <code>msgInBg: OLEANDER_BUBBLE_IN_80;</code>. Тогда цвет берётся оттуда.</p>
+      <p>Константы объявлены в шапке файла. Меняешь одну строку там, меняются все ключи, которые на неё ссылаются. В таблице такие ключи помечены колонкой <b>через</b>.</p>
+      <p>Ключ, которого в файле нет вообще, берёт цвет базового: <code>windowBg</code>, <code>windowFg</code>, <code>windowBgOver</code> и так далее.</p>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="Поиск по названию места, ключу или цвету" autocomplete="off">
+    <span class="count" id="count"></span>
+  </div>
+
+  <div id="groups"></div>
+
+  <footer class="foot">
+    Страница собрана из файла палитры автоматически командой <code>python build.py</code>.
+  </footer>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const DATA = [{"title": "Константы темы", "note": "Ручки. Меняешь строку здесь, меняются все ключи ниже.", "rows": [{"key": "OLEANDER_BG", "label": "Основной фон", "value": "#3b1e21", "via": "", "alpha": 100}, {"key": "OLEANDER_BG_DEEP", "label": "Самый тёмный фон (панель папок)", "value": "#301212", "via": "", "alpha": 100}, {"key": "OLEANDER_BG_OVER", "label": "Фон под курсором", "value": "#4d2a2d", "via": "", "alpha": 100}, {"key": "OLEANDER_BG_RIPPLE", "label": "Волна при клике", "value": "#4e2b30", "via": "", "alpha": 100}, {"key": "OLEANDER_BG_PANEL", "label": "Фон панелей и полей поиска", "value": "#4e2b2e", "via": "", "alpha": 100}, {"key": "OLEANDER_ACCENT", "label": "Акцент (заливка активного)", "value": "#b55f6c", "via": "", "alpha": 100}, {"key": "OLEANDER_ACCENT_DEEP", "label": "Тёмный акцент (кнопки)", "value": "#ad324a", "via": "", "alpha": 100}, {"key": "OLEANDER_ACCENT_LIGHT", "label": "Светлый акцент (ссылки, онлайн)", "value": "#dc8e9c", "via": "", "alpha": 100}, {"key": "OLEANDER_TEXT", "label": "Основной текст", "value": "#f5f5f5", "via": "", "alpha": 100}, {"key": "OLEANDER_TEXT_SUB", "label": "Второстепенный текст", "value": "#906e74", "via": "", "alpha": 100}, {"key": "OLEANDER_BUBBLE_OUT", "label": "Исходящий пузырь (непрозрачный)", "value": "#892d3c", "via": "", "alpha": 100}, {"key": "OLEANDER_BUBBLE_SEL", "label": "Выделенное сообщение", "value": "#ae314b", "via": "", "alpha": 100}, {"key": "OLEANDER_COMPOSE_BG", "label": "Поле ввода", "value": "#3b1e2100", "via": "", "alpha": 0}, {"key": "OLEANDER_COMPOSE_EDGE", "label": "Рамка вокруг поля ввода", "value": "#3b1e21d9", "via": "", "alpha": 85}, {"key": "OLEANDER_PANEL_85", "label": "Панель Unmute / Join", "value": "#3b1e21d9", "via": "", "alpha": 85}, {"key": "OLEANDER_ICON_85", "label": "Скрепка, смайлик, микрофон", "value": "#897276d9", "via": "", "alpha": 85}, {"key": "OLEANDER_BUBBLE_IN_80", "label": "Входящий пузырь", "value": "#441d23cc", "via": "", "alpha": 80}, {"key": "OLEANDER_BUBBLE_OUT_80", "label": "Исходящий пузырь", "value": "#892d3cb3", "via": "", "alpha": 70}, {"key": "OLEANDER_ICON_85_OVER", "label": "Те же иконки под курсором", "value": "#dcdcdcd9", "via": "", "alpha": 85}]}, {"title": "Окно и общие цвета", "note": "Фолбэки: ключ, который ты не задал явно, берёт цвет отсюда.", "rows": [{"key": "windowBg", "label": "Фон окна, он же фон списка чатов", "value": "#3b1e21", "via": "OLEANDER_BG", "alpha": 100}, {"key": "windowBgOver", "label": "Фон элемента под курсором", "value": "#4d2a2d", "via": "OLEANDER_BG_OVER", "alpha": 100}, {"key": "windowBgRipple", "label": "Волна при клике", "value": "#4e2b30", "via": "OLEANDER_BG_RIPPLE", "alpha": 100}, {"key": "windowFg", "label": "Основной текст", "value": "#f5f5f5", "via": "OLEANDER_TEXT", "alpha": 100}, {"key": "windowSubTextFg", "label": "Второстепенный текст", "value": "#98787d", "via": "", "alpha": 100}, {"key": "windowBoldFg", "label": "Жирный текст", "value": "#e9e8e8", "via": "", "alpha": 100}, {"key": "windowBgActive", "label": "Заливка активных областей", "value": "#b55f6c", "via": "OLEANDER_ACCENT", "alpha": 100}, {"key": "windowFgActive", "label": "Текст поверх активной заливки", "value": "#ffffff", "via": "", "alpha": 100}, {"key": "windowActiveTextFg", "label": "Активный текст: ссылки, статус онлайн", "value": "#dc8e9c", "via": "OLEANDER_ACCENT_LIGHT", "alpha": 100}, {"key": "windowShadowFg", "label": "Тень", "value": "#000000", "via": "", "alpha": 100}, {"key": "layerBg", "label": "Затемнение под открытым окном", "value": "#0000007f", "via": "", "alpha": 50}]}, {"title": "Заголовок окна", "note": "Верхняя полоса с кнопками свернуть, развернуть, закрыть.", "rows": [{"key": "titleBg", "label": "Фон, когда окно неактивно", "value": "#46252a", "via": "", "alpha": 100}, {"key": "titleBgActive", "label": "Фон, когда окно активно", "value": "#4e2b2e", "via": "OLEANDER_BG_PANEL", "alpha": 100}, {"key": "titleButtonFg", "label": "Иконки кнопок", "value": "#7c5e65", "via": "", "alpha": 100}, {"key": "titleButtonFgOver", "label": "Иконки под курсором", "value": "#e0e0e0", "via": "", "alpha": 100}, {"key": "titleButtonCloseBgOver", "label": "Фон крестика под курсором", "value": "#d94b79", "via": "", "alpha": 100}]}, {"title": "Панель папок слева", "note": "Узкая колонка с All chats, Rust, News.", "rows": [{"key": "sideBarBg", "label": "Фон панели", "value": "#301212", "via": "OLEANDER_BG_DEEP", "alpha": 100}, {"key": "sideBarBgActive", "label": "Фон активной папки", "value": "#4e2b2e", "via": "OLEANDER_BG_PANEL", "alpha": 100}, {"key": "sideBarBgRipple", "label": "Волна при клике", "value": "#43272a", "via": "", "alpha": 100}, {"key": "sideBarTextFg", "label": "Подпись папки", "value": "#9a7d82", "via": "", "alpha": 100}, {"key": "sideBarTextFgActive", "label": "Подпись активной папки", "value": "#e28c9f", "via": "", "alpha": 100}, {"key": "sideBarIconFg", "label": "Иконка папки", "value": "#9a7d82", "via": "", "alpha": 100}, {"key": "sideBarIconFgActive", "label": "Иконка активной папки", "value": "#df869b", "via": "", "alpha": 100}, {"key": "sideBarBadgeBg", "label": "Счётчик непрочитанных", "value": "#df869b", "via": "", "alpha": 100}, {"key": "sideBarBadgeBgMuted", "label": "Счётчик для замьюченных", "value": "#9a7d82", "via": "", "alpha": 100}]}, {"title": "Список чатов", "note": "Левая колонка со строками чатов и поиском.", "rows": [{"key": "dialogsBg", "label": "Фон списка", "value": "#3b1e21", "via": "windowBg", "alpha": 100}, {"key": "dialogsBgOver", "label": "Строка под курсором", "value": "#46272c", "via": "", "alpha": 100}, {"key": "dialogsBgActive", "label": "Строка открытого чата", "value": "#892d3c", "via": "OLEANDER_BUBBLE_OUT", "alpha": 100}, {"key": "dialogsRippleBg", "label": "Волна при клике по строке", "value": "#4d2a2d", "via": "OLEANDER_BG_OVER", "alpha": 100}, {"key": "dialogsNameFg", "label": "Название чата", "value": "#f5f5f5", "via": "OLEANDER_TEXT", "alpha": 100}, {"key": "dialogsNameFgActive", "label": "Название в открытом чате", "value": "#ffffff", "via": "windowFgActive", "alpha": 100}, {"key": "dialogsTextFg", "label": "Текст последнего сообщения", "value": "#9e878b", "via": "", "alpha": 100}, {"key": "dialogsTextFgService", "label": "Имя отправителя в группе", "value": "#df96a5", "via": "", "alpha": 100}, {"key": "dialogsDateFg", "label": "Время справа", "value": "#a18c8e", "via": "", "alpha": 100}, {"key": "dialogsDraftFg", "label": "Метка Draft", "value": "#e57d9a", "via": "", "alpha": 100}, {"key": "dialogsUnreadBg", "label": "Счётчик непрочитанных", "value": "#ba465b", "via": "", "alpha": 100}, {"key": "dialogsUnreadBgMuted", "label": "Счётчик у замьюченного чата", "value": "#77444d", "via": "", "alpha": 100}, {"key": "dialogsUnreadFg", "label": "Цифра в счётчике", "value": "#ffffff", "via": "", "alpha": 100}, {"key": "dialogsOnlineBadgeFg", "label": "Зелёная точка онлайн", "value": "#e68e9e", "via": "", "alpha": 100}, {"key": "dialogsSentIconFg", "label": "Галочки отправлено, прочитано", "value": "#e599a8", "via": "", "alpha": 100}, {"key": "dialogsVerifiedIconBg", "label": "Значок верификации", "value": "#dc8e9c", "via": "OLEANDER_ACCENT_LIGHT", "alpha": 100}, {"key": "searchedBarBg", "label": "Полоса заголовка результатов поиска", "value": "#48262b", "via": "", "alpha": 100}, {"key": "searchedBarFg", "label": "Текст в этой полосе", "value": "#a09294", "via": "", "alpha": 100}, {"key": "filterInputInactiveBg", "label": "Поле поиска, неактивное", "value": "#4e2b2e", "via": "OLEANDER_BG_PANEL", "alpha": 100}, {"key": "filterInputActiveBg", "label": "Поле поиска, активное", "value": "#4e2b2e", "via": "OLEANDER_BG_PANEL", "alpha": 100}]}, {"title": "Верх чата", "note": "Шапка с именем собеседника и закреплённое сообщение.", "rows": [{"key": "topBarBg", "label": "Фон шапки чата", "value": "#3b1e21", "via": "OLEANDER_BG", "alpha": 100}, {"key": "historyPinnedBg", "label": "Полоса закреплённого сообщения", "value": "#452126", "via": "", "alpha": 100}, {"key": "historyUnreadBarBg", "label": "Полоса Unread messages", "value": "#441d20", "via": "", "alpha": 100}, {"key": "historyUnreadBarFg", "label": "Текст в этой полосе", "value": "#ffffff", "via": "", "alpha": 100}]}, {"title": "Сообщения", "note": "Пузыри, текст в них и всё, что внутри.", "rows": [{"key": "msgInBg", "label": "Входящий пузырь", "value": "#441d23cc", "via": "OLEANDER_BUBBLE_IN_80", "alpha": 80}, {"key": "msgInBgSelected", "label": "Входящий выделенный", "value": "#ae314b", "via": "OLEANDER_BUBBLE_SEL", "alpha": 100}, {"key": "msgOutBg", "label": "Исходящий пузырь", "value": "#892d3cb3", "via": "OLEANDER_BUBBLE_OUT_80", "alpha": 70}, {"key": "msgOutBgSelected", "label": "Исходящий выделенный", "value": "#ae314b", "via": "OLEANDER_BUBBLE_SEL", "alpha": 100}, {"key": "historyTextInFg", "label": "Текст входящего", "value": "#f5f5f5", "via": "windowFg", "alpha": 100}, {"key": "historyTextOutFg", "label": "Текст исходящего", "value": "#efe8e8", "via": "", "alpha": 100}, {"key": "msgInDateFg", "label": "Время во входящем", "value": "#927379", "via": "", "alpha": 100}, {"key": "msgOutDateFg", "label": "Время в исходящем", "value": "#c29098", "via": "", "alpha": 100}, {"key": "historyLinkInFg", "label": "Ссылка во входящем", "value": "#df95a5", "via": "", "alpha": 100}, {"key": "historyLinkOutFg", "label": "Ссылка в исходящем", "value": "#eaa6b6", "via": "", "alpha": 100}, {"key": "msgInMonoFg", "label": "Моноширинный текст, входящий", "value": "#ae6575", "via": "", "alpha": 100}, {"key": "msgOutMonoFg", "label": "Моноширинный текст, исходящий", "value": "#e6c2c8", "via": "", "alpha": 100}, {"key": "msgInReplyBarColor", "label": "Полоска цитаты во входящем", "value": "#c76279", "via": "", "alpha": 100}, {"key": "msgOutReplyBarColor", "label": "Полоска цитаты в исходящем", "value": "#dc8e9c", "via": "OLEANDER_ACCENT_LIGHT", "alpha": 100}, {"key": "msgInServiceFg", "label": "Служебный текст во входящем", "value": "#e397a5", "via": "", "alpha": 100}, {"key": "msgOutServiceFg", "label": "Служебный текст в исходящем", "value": "#ecb0bb", "via": "", "alpha": 100}, {"key": "historyOutIconFg", "label": "Галочки на исходящем", "value": "#e795a8", "via": "", "alpha": 100}, {"key": "msgServiceBg", "label": "Плашка даты и служебных сообщений", "value": "#51272dd5", "via": "", "alpha": 84}, {"key": "msgServiceFg", "label": "Текст на этой плашке", "value": "#ffffff", "via": "windowFgActive", "alpha": 100}, {"key": "msgSelectOverlay", "label": "Заливка поверх выделенного медиа", "value": "#c94a604c", "via": "", "alpha": 30}, {"key": "msgWaveformInActive", "label": "Прослушанная часть голосового, входящее", "value": "#c37081", "via": "", "alpha": 100}, {"key": "msgWaveformOutActive", "label": "Прослушанная часть голосового, исходящее", "value": "#e48d9c", "via": "", "alpha": 100}]}, {"title": "Поле ввода и низ чата", "note": "Нижняя панель, иконки и кнопка вниз.", "rows": [{"key": "historyComposeAreaBg", "label": "Само поле ввода", "value": "#3b1e2100", "via": "OLEANDER_COMPOSE_BG", "alpha": 0}, {"key": "historyReplyBg", "label": "Рамка вокруг поля, она же панель ответа и пересылки", "value": "#3b1e21d9", "via": "OLEANDER_COMPOSE_EDGE", "alpha": 85}, {"key": "historyComposeAreaFg", "label": "Текст, который печатаешь", "value": "#f5f5f5", "via": "historyTextInFg", "alpha": 100}, {"key": "historyComposeIconFg", "label": "Скрепка, смайлик, микрофон", "value": "#897276d9", "via": "OLEANDER_ICON_85", "alpha": 85}, {"key": "historyComposeIconFgOver", "label": "Те же иконки под курсором", "value": "#dcdcdcd9", "via": "OLEANDER_ICON_85_OVER", "alpha": 85}, {"key": "historySendIconFg", "label": "Стрелка отправки", "value": "#b55f6c", "via": "windowBgActive", "alpha": 100}, {"key": "historyComposeButtonBg", "label": "Панель Unmute, Join, Unblock", "value": "#3b1e21d9", "via": "OLEANDER_PANEL_85", "alpha": 85}, {"key": "historyComposeButtonBgOver", "label": "Та же панель под курсором", "value": "#452228", "via": "", "alpha": 100}, {"key": "historyReplyIconFg", "label": "Иконка слева в панели ответа", "value": "#b55f6c", "via": "windowBgActive", "alpha": 100}, {"key": "historyReplyCancelFg", "label": "Крестик отмены ответа", "value": "#8b7a7e", "via": "cancelIconFg", "alpha": 100}, {"key": "historyToDownBg", "label": "Круглая кнопка вниз", "value": "#4b2329", "via": "", "alpha": 100}, {"key": "historyToDownFg", "label": "Стрелка в этой кнопке", "value": "#a49999", "via": "", "alpha": 100}, {"key": "placeholderFg", "label": "Подсказка в полях ввода", "value": "#897377", "via": "", "alpha": 100}]}, {"title": "Аватарки без фото", "note": "Градиент: первый цвет сверху, второй снизу.", "rows": [{"key": "historyPeer1UserpicBg", "label": "Аватарка 1, верх", "value": "#b276a6", "via": "", "alpha": 100}, {"key": "historyPeer1UserpicBg2", "label": "Аватарка 1, низ", "value": "#904781", "via": "", "alpha": 100}, {"key": "historyPeer2UserpicBg", "label": "Аватарка 2, верх", "value": "#96547c", "via": "", "alpha": 100}, {"key": "historyPeer2UserpicBg2", "label": "Аватарка 2, низ", "value": "#673252", "via": "", "alpha": 100}, {"key": "historyPeer3UserpicBg", "label": "Аватарка 3, верх", "value": "#b98399", "via": "", "alpha": 100}, {"key": "historyPeer3UserpicBg2", "label": "Аватарка 3, низ", "value": "#9d4d6d", "via": "", "alpha": 100}, {"key": "historyPeer4UserpicBg", "label": "Аватарка 4, верх", "value": "#a35c6a", "via": "", "alpha": 100}, {"key": "historyPeer4UserpicBg2", "label": "Аватарка 4, низ", "value": "#df869b", "via": "", "alpha": 100}, {"key": "historyPeer5UserpicBg", "label": "Аватарка 5, верх", "value": "#ae6f71", "via": "", "alpha": 100}, {"key": "historyPeer5UserpicBg2", "label": "Аватарка 5, низ", "value": "#df869b", "via": "", "alpha": 100}, {"key": "historyPeer6UserpicBg", "label": "Аватарка 6, верх", "value": "#905951", "via": "", "alpha": 100}, {"key": "historyPeer6UserpicBg2", "label": "Аватарка 6, низ", "value": "#df869b", "via": "", "alpha": 100}, {"key": "historyPeer7UserpicBg", "label": "Аватарка 7, верх", "value": "#b68e7c", "via": "", "alpha": 100}, {"key": "historyPeer7UserpicBg2", "label": "Аватарка 7, низ", "value": "#96614a", "via": "", "alpha": 100}, {"key": "historyPeer8UserpicBg", "label": "Аватарка 8, верх", "value": "#c1909f", "via": "", "alpha": 100}, {"key": "historyPeer8UserpicBg2", "label": "Аватарка 8, низ", "value": "#ab546e", "via": "", "alpha": 100}, {"key": "historyPeerSavedMessagesBg2", "label": "Saved Messages, низ градиента", "value": "#df869b", "via": "historyPeer4UserpicBg2", "alpha": 100}, {"key": "historyPeerUserpicFg", "label": "Буквы на аватарке", "value": "#ffffff", "via": "windowFgActive", "alpha": 100}]}, {"title": "Имена участников в группах", "note": "Восемь цветов, которыми подписаны отправители.", "rows": [{"key": "historyPeer1NameFg", "label": "Имя 1", "value": "#fb6169", "via": "", "alpha": 100}, {"key": "historyPeer2NameFg", "label": "Имя 2", "value": "#85de85", "via": "", "alpha": 100}, {"key": "historyPeer3NameFg", "label": "Имя 3", "value": "#f3bc5c", "via": "", "alpha": 100}, {"key": "historyPeer4NameFg", "label": "Имя 4", "value": "#ee656e", "via": "", "alpha": 100}, {"key": "historyPeer5NameFg", "label": "Имя 5", "value": "#b48bf2", "via": "", "alpha": 100}, {"key": "historyPeer6NameFg", "label": "Имя 6", "value": "#ff5694", "via": "", "alpha": 100}, {"key": "historyPeer7NameFg", "label": "Имя 7", "value": "#62d4e3", "via": "", "alpha": 100}, {"key": "historyPeer8NameFg", "label": "Имя 8", "value": "#faa357", "via": "", "alpha": 100}]}, {"title": "Меню, окна, кнопки", "note": "Контекстные меню, диалоги, тосты.", "rows": [{"key": "menuBg", "label": "Фон контекстного меню", "value": "#3b1e21", "via": "OLEANDER_BG", "alpha": 100}, {"key": "menuBgOver", "label": "Пункт меню под курсором", "value": "#ffffff", "via": "", "alpha": 100}, {"key": "menuIconFg", "label": "Иконка пункта меню", "value": "#897276", "via": "", "alpha": 100}, {"key": "menuIconFgOver", "label": "Иконка под курсором", "value": "#dcdcdc", "via": "", "alpha": 100}, {"key": "menuSeparatorFg", "label": "Разделитель в меню", "value": "#492a32", "via": "", "alpha": 100}, {"key": "boxBg", "label": "Фон диалогового окна", "value": "#3b1e21", "via": "OLEANDER_BG", "alpha": 100}, {"key": "boxTitleFg", "label": "Заголовок окна", "value": "#ebebeb", "via": "", "alpha": 100}, {"key": "boxTextFg", "label": "Текст в окне", "value": "#f5f5f5", "via": "windowFg", "alpha": 100}, {"key": "activeButtonBg", "label": "Основная кнопка", "value": "#ad324a", "via": "OLEANDER_ACCENT_DEEP", "alpha": 100}, {"key": "activeButtonFg", "label": "Текст основной кнопки", "value": "#ffffff", "via": "", "alpha": 100}, {"key": "lightButtonFg", "label": "Текстовая кнопка (Cancel, Save)", "value": "#dc8e9c", "via": "OLEANDER_ACCENT_LIGHT", "alpha": 100}, {"key": "attentionButtonFg", "label": "Опасное действие (Delete, Log out)", "value": "#da6181", "via": "", "alpha": 100}, {"key": "toastBg", "label": "Фон всплывающего уведомления", "value": "#000000b2", "via": "", "alpha": 70}, {"key": "tooltipBg", "label": "Фон подсказки", "value": "#3b1e21", "via": "OLEANDER_BG", "alpha": 100}]}, {"title": "Звонки и медиа", "note": "Плашка активного звонка, просмотрщик, плеер.", "rows": [{"key": "callBarBg", "label": "Плашка активного звонка", "value": "#9d3a4a", "via": "", "alpha": 100}, {"key": "callBarBgMuted", "label": "Та же плашка с выключенным микрофоном", "value": "#6d3a42", "via": "", "alpha": 100}, {"key": "callAnswerBg", "label": "Кнопка ответа", "value": "#bc5a6f", "via": "", "alpha": 100}, {"key": "callHangupBg", "label": "Кнопка сброса", "value": "#c5677c", "via": "", "alpha": 100}, {"key": "mediaviewBg", "label": "Фон просмотрщика медиа", "value": "#222222eb", "via": "", "alpha": 92}, {"key": "mediaPlayerActiveFg", "label": "Прослушанная часть в плеере", "value": "#b55f6c", "via": "windowBgActive", "alpha": 100}, {"key": "mediaPlayerInactiveFg", "label": "Оставшаяся часть в плеере", "value": "#633e43", "via": "sliderBgInactive", "alpha": 100}]}];
+
+const ALPHA_STEPS = [100, 95, 90, 85, 80, 75, 70, 60, 50, 40, 30, 20, 10, 0];
+document.getElementById("alphaScale").innerHTML = ALPHA_STEPS.map(p => {
+  const hex = Math.round(p / 100 * 255).toString(16).padStart(2, "0");
+  return `<div class="alpha-chip"><b>${hex}</b><span>${p}%</span></div>`;
+}).join("");
+
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+document.getElementById("groups").innerHTML = DATA.map((g, gi) => `
+  <section class="group" data-g="${gi}">
+    <h2>${esc(g.title)}</h2>
+    <p class="note">${esc(g.note)}</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr>
+          <th></th><th>Место в интерфейсе</th><th>Ключ</th><th>Цвет</th><th>Через</th><th>Непрозр.</th>
+        </tr></thead>
+        <tbody>
+        ${g.rows.map(r => `
+          <tr data-s="${esc((r.label + " " + r.key + " " + r.value + " " + r.via).toLowerCase())}">
+            <td class="c-sw"><div class="sw" style="--swatch:${r.value}"></div></td>
+            <td class="c-label">${esc(r.label)}</td>
+            <td><button class="key" type="button">${esc(r.key)}</button></td>
+            <td class="val">${esc(r.value)}</td>
+            <td class="via">${esc(r.via || "")}</td>
+            <td><span class="pct ${r.alpha === 100 ? "full" : ""}">${r.alpha}%</span></td>
+          </tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+  </section>`).join("");
+
+const total = DATA.reduce((n, g) => n + g.rows.length, 0);
+const countEl = document.getElementById("count");
+countEl.textContent = total + " ключей";
+
+const q = document.getElementById("q");
+q.addEventListener("input", () => {
+  const term = q.value.trim().toLowerCase();
+  let shown = 0;
+  document.querySelectorAll("section.group").forEach(sec => {
+    let any = 0;
+    sec.querySelectorAll("tbody tr").forEach(tr => {
+      const hit = !term || tr.dataset.s.includes(term);
+      tr.hidden = !hit;
+      if (hit) { any++; shown++; }
+    });
+    sec.hidden = any === 0;
+  });
+  countEl.textContent = term ? shown + " из " + total : total + " ключей";
+});
+
+const toast = document.getElementById("toast");
+let toastTimer;
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".key");
+  if (!btn) return;
+  const text = btn.textContent;
+  navigator.clipboard?.writeText(text).then(() => {
+    toast.textContent = text + " скопирован";
+    toast.classList.add("on");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("on"), 1400);
+  }).catch(() => {});
+});
+</script>
+</body>
+</html>

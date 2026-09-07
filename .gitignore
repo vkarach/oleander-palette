@@ -1,0 +1,7 @@
+# palette is still in development - stop ignoring it and commit once stable
+/palette/
+/backups/
+
+__pycache__/
+*.pyc
+ref_data.json
