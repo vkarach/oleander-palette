@@ -9,7 +9,7 @@ a generated reference page mapping every palette key to where it shows up in the
 
 | Path | What |
 | --- | --- |
-| `palette/Oleander.tdesktop-palette` | the theme (working copy, gitignored while in development) |
+| `palette/Oleander.tdesktop-palette` | the theme, version-tracked |
 | `backups/` | timestamped snapshots (gitignored) |
 | `template.html` | HTML shell for the reference page, `__DATA__` is the injection point |
 | `build.py` | reads the palette, writes `docs/index.html` |
@@ -35,6 +35,5 @@ python backup.py                        # %APPDATA%/Telegram Desktop/tdata/Olean
 python backup.py path/to/palette         # or set OLEANDER_PALETTE
 ```
 
-Once the theme is stable, remove `/palette/` from `.gitignore` and commit it - git
-history then becomes the real version-tracked backup, with `backups/` as a local
-safety net.
+The palette is committed, so git history is the version-tracked backup; `backups/`
+holds local pre-change snapshots as a safety net.
