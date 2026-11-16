@@ -1,0 +1,38 @@
+{
+  "name": "Oleander",
+  "tagline": "A rose and maroon dark palette.",
+  "groups": [
+    {
+      "title": "Backgrounds",
+      "colors": [
+        {"token": "bg-deep", "name": "Deep", "hex": "#301212", "use": "Darkest surface"},
+        {"token": "bg", "name": "Base", "hex": "#3b1e21", "use": "Main background"},
+        {"token": "bg-raised", "name": "Raised", "hex": "#4d2a2d", "use": "Hover and raised surfaces"},
+        {"token": "bg-panel", "name": "Panel", "hex": "#4e2b2e", "use": "Panels and inputs"}
+      ]
+    },
+    {
+      "title": "Accents",
+      "colors": [
+        {"token": "accent", "name": "Rose", "hex": "#b55f6c", "use": "Primary accent"},
+        {"token": "accent-deep", "name": "Rose deep", "hex": "#ad324a", "use": "Buttons"},
+        {"token": "accent-light", "name": "Rose light", "hex": "#dc8e9c", "use": "Links and highlights"},
+        {"token": "selected", "name": "Selected", "hex": "#ae314b", "use": "Active and selected state"}
+      ]
+    },
+    {
+      "title": "Messages",
+      "colors": [
+        {"token": "bubble-in", "name": "Bubble in", "hex": "#441d23", "use": "Incoming bubble"},
+        {"token": "bubble-out", "name": "Bubble out", "hex": "#892d3c", "use": "Outgoing bubble"}
+      ]
+    },
+    {
+      "title": "Text",
+      "colors": [
+        {"token": "text", "name": "Text", "hex": "#f5f5f5", "use": "Primary text"},
+        {"token": "text-muted", "name": "Muted", "hex": "#906e74", "use": "Secondary text"}
+      ]
+    }
+  ]
+}
