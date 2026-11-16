@@ -34,5 +34,15 @@
         {"token": "text-muted", "name": "Muted", "hex": "#906e74", "use": "Secondary text"}
       ]
     }
+  ],
+  "matches": [
+    {"token": "match-sage", "name": "Sage", "hex": "#8fb39a", "use": "Calm green, the classic rose partner"},
+    {"token": "match-teal", "name": "Dusty teal", "hex": "#5f9ea0", "use": "Cool counterweight to the warm reds"},
+    {"token": "match-gold", "name": "Antique gold", "hex": "#d9a566", "use": "Warm highlight, badges and stars"},
+    {"token": "match-cream", "name": "Cream", "hex": "#f1e3d3", "use": "Softer alternative to pure white text"},
+    {"token": "match-peach", "name": "Peach", "hex": "#e8a58f", "use": "Friendly tint next to Rose light"},
+    {"token": "match-lavender", "name": "Lavender", "hex": "#a99bc9", "use": "Cool violet for tags and charts"},
+    {"token": "match-slate", "name": "Slate blue", "hex": "#6f86a8", "use": "Muted blue for secondary data"},
+    {"token": "match-olive", "name": "Olive", "hex": "#8a9a5b", "use": "Earthy green for success states"}
   ]
 }

@@ -9,9 +9,9 @@ A rose and maroon dark color palette.
 | Path | What |
 | --- | --- |
 | `palette.json` | the palette, source of truth |
-| `template.html` | HTML shell, `__DATA__` is the injection point |
-| `build.py` | renders `docs/index.html` from `palette.json` |
-| `docs/` | the published page (GitHub Pages) |
+| `templates/` | `index.html` (color squares), `details.html` (detailed map), shared `style.css` |
+| `build.py` | renders `docs/index.html` and `docs/details.html` from `palette.json` |
+| `docs/` | the published pages (GitHub Pages) |
 | `palette/Oleander.tdesktop-palette` | optional Telegram Desktop theme using the same colors |
 
 ## Build
@@ -20,4 +20,4 @@ A rose and maroon dark color palette.
 python build.py
 ```
 
-Commit the updated `docs/index.html`.
+Commit the updated `docs/`.
